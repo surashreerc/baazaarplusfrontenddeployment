@@ -29,8 +29,12 @@ const Shop = () => {
     const fetchProductsAndStock = async () => {
       try {
         const [productResponse, stockResponse] = await Promise.all([
-          axios.get('http://13.200.241.188:9090/api/categories'),
-          axios.get('http://13.200.241.188:9090/inventory/all-inventory')
+          axios.get('http://13.200.241.188:9090/api/categories', {
+            headers: { Authorization: `Bearer ${token}` }
+          }),
+          axios.get('http://13.200.241.188:9090/inventory/all-inventory', {
+            headers: { Authorization: `Bearer ${token}` }
+          })
         ]);
 
         const categories = productResponse.data;
@@ -86,6 +90,8 @@ const Shop = () => {
       await axios.post('http://13.200.241.188:9090/carts/cart/product/add', {
         userId,
         productId: product.id,
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
       });
 
       dispatch(addToCart({ ...product, quantity: 1 }));
