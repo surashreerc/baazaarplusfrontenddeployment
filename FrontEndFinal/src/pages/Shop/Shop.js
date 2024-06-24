@@ -29,8 +29,8 @@ const Shop = () => {
     const fetchProductsAndStock = async () => {
       try {
         const [productResponse, stockResponse] = await Promise.all([
-          axios.get('http://localhost:8085/api/categories'),
-          axios.get('http://localhost:8088/inventory/all-inventory')
+          axios.get('http://13.200.241.188:9090/api/categories'),
+          axios.get('http://13.200.241.188:9090/inventory/all-inventory')
         ]);
 
         const categories = productResponse.data;
@@ -77,13 +77,13 @@ const Shop = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const userResponse = await axios.get('http://localhost:8087/api/auth/users', {
+      const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const user = userResponse.data.find(user => user.email === userEmail);
       const userId = user.id;
 
-      await axios.post('http://localhost:8089/carts/cart/product/add', {
+      await axios.post('http://13.200.241.188:9090/carts/cart/product/add', {
         userId,
         productId: product.id,
       });

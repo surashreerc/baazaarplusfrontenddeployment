@@ -45,7 +45,7 @@ const DeleteProductModal = ({ isOpen, onRequestClose, onDeleteSuccess }) => {
     const fetchProductIds = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:8085/api/products/product');
+        const response = await axios.get('http://13.200.241.188:9090/api/products/product');
         const productIds = response.data.map((product) => product.id);
         setProductIds(productIds);
       } catch (error) {
@@ -59,7 +59,7 @@ const DeleteProductModal = ({ isOpen, onRequestClose, onDeleteSuccess }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8085/api/products/product/${productId}`);
+      await axios.delete(`http://13.200.241.188:9090/api/products/product/${productId}`);
       onDeleteSuccess();
       onRequestClose();
       window.location.reload(); // Refresh the page

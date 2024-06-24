@@ -46,7 +46,7 @@ const UpdateStockModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
     const fetchProductIds = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:8085/api/products/product');
+        const response = await axios.get('http://13.200.241.188:9090/api/products/product');
         const productIds = response.data.map((product) => product.id);
         setProductIds(productIds);
       } catch (error) {
@@ -66,7 +66,7 @@ const UpdateStockModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
         productId: productId,
         stock: stock,
       };
-      await axios.post('http://localhost:8088/inventory/updateInventory', requestBody);
+      await axios.post('http://13.200.241.188:9090/inventory/updateInventory', requestBody);
       console.log('Stock updated successfully');
       onUpdateSuccess();
       onRequestClose();

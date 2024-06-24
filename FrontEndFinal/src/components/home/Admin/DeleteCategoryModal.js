@@ -9,7 +9,7 @@ const DeleteCategoryModal = ({ isOpen, onRequestClose, onDeleteSuccess }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:8085/api/categories');
+        const response = await axios.get('http://13.200.241.188:9090/api/categories');
         setCategories(response.data);
       } catch (err) {
         console.error('Error fetching categories:', err);
@@ -60,7 +60,7 @@ const DeleteCategoryModal = ({ isOpen, onRequestClose, onDeleteSuccess }) => {
         return;
       }
 
-      await axios.delete(`http://localhost:8085/api/categories/${selectedCategoryId}`);
+      await axios.delete(`http://13.200.241.188:9090/api/categories/${selectedCategoryId}`);
       onDeleteSuccess();
       onRequestClose();
       window.location.reload(); // Refresh the page

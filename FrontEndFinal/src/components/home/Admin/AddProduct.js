@@ -23,7 +23,7 @@ const AddProduct = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:8085/api/categories');
+        const response = await axios.get('http://13.200.241.188:9090/api/categories');
         const categories = response.data;
 
         // Extract all products from the categories
@@ -72,7 +72,7 @@ const AddProduct = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:8085/api/products/product/search?query=${searchQuery}`);
+      const response = await axios.get(`http://13.200.241.188:9090/api/products/product/search?query=${searchQuery}`);
       setFilteredProducts(response.data);
     } catch (err) {
       setError('Failed to search products. Please try again later.');

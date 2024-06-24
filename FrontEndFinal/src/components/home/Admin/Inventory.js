@@ -25,8 +25,8 @@ const Inventory = () => {
     const fetchProductsAndInventory = async () => {
       try {
         const [productsResponse, inventoryResponse] = await Promise.all([
-          axios.get('http://localhost:8085/api/categories'),
-          axios.get('http://localhost:8088/inventory/all-inventory')
+          axios.get('http://13.200.241.188:9090/api/categories'),
+          axios.get('http://13.200.241.188:9090/inventory/all-inventory')
         ]);
 
         const categories = productsResponse.data;
@@ -84,7 +84,7 @@ const Inventory = () => {
     }
 
     try {
-      const response = await axios.get(`http://localhost:8085/api/products/product/search?query=${searchQuery}`);
+      const response = await axios.get(`http://13.200.241.188:9090/api/products/product/search?query=${searchQuery}`);
       setFilteredProducts(response.data);
     } catch (err) {
       setError('Failed to search products. Please try again later.');

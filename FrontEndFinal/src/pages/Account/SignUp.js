@@ -23,7 +23,7 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true); // Start loading indicator
     try {
-      const response = await axios.post('http://localhost:8087/api/auth/signup', {
+      const response = await axios.post('http://13.200.241.188:9090/api/auth/signup', {
         username,
         email,
         password
@@ -45,7 +45,7 @@ const SignUp = () => {
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8087/api/auth/verify-otp', {
+      const response = await axios.post('http://13.200.241.188:9090/api/auth/verify-otp', {
         email,
         otp
       });
@@ -53,7 +53,7 @@ const SignUp = () => {
       setSuccess('OTP verification successful. You can now sign in.');
       setError('');
       // Redirect to SignIn after successful OTP verification
-      window.location.href = 'http://localhost:3000/signin';
+      window.location.href = 'https://baazaarplus-vlfb.vercel.app';
     } catch (err) {
       console.error('OTP verification failed:', err);
       setError('OTP verification failed. Please try again.');

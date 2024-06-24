@@ -17,7 +17,7 @@ const EditProductModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
     const fetchProductIds = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:8085/api/products/product');
+        const response = await axios.get('http://13.200.241.188:9090/api/products/product');
         const productIds = response.data.map((product) => product.id);
         setProductIds(productIds);
       } catch (error) {
@@ -32,7 +32,7 @@ const EditProductModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:8085/api/categories');
+        const response = await axios.get('http://13.200.241.188:9090/api/categories');
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -45,7 +45,7 @@ const EditProductModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
     if (!selectedProductId) return;
 
     try {
-      const response = await axios.get(`http://localhost:8085/api/products/product/${selectedProductId}`);
+      const response = await axios.get(`http://13.200.241.188:9090/api/products/product/${selectedProductId}`);
       const product = response.data;
       setName(product.name);
       setDescription(product.description);
@@ -143,7 +143,7 @@ const EditProductModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
       }
 
       const response = await axios.put(
-        `http://localhost:8085/api/products/product/${selectedProductId}`,
+        `http://13.200.241.188:9090/api/products/product/${selectedProductId}`,
         formData,
         {
           headers: {

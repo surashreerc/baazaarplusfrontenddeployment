@@ -77,7 +77,7 @@ const ProductModal = ({ isOpen, onRequestClose, categories }) => {
       formData.append('stock', stock);
       formData.append('productImage', productImage);
 
-      const response = await axios.post('http://localhost:8085/api/products/product', formData, {
+      const response = await axios.post('http://13.200.241.188:9090/api/products/product', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

@@ -24,7 +24,7 @@
 //   const fetchUser = async () => {
 //     try {
 //       const token = localStorage.getItem('token');
-//       const userResponse = await axios.get('http://localhost:8087/api/auth/users', {
+//       const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
 //         headers: { Authorization: `Bearer ${token}` }
 //       });
 //       const user = userResponse.data.find(user => user.email === userEmail);
@@ -40,7 +40,7 @@
 //   const placeOrder = async (userId, addressId) => {
 //     try {
 //       const token = localStorage.getItem('token');
-//       await axios.post('http://localhost:8081/api/orders', {
+//       await axios.post('http://13.200.241.188:9090/api/orders', {
 //         customerId: userId,
 //         addressId: addressId
 //       }, {
@@ -55,7 +55,7 @@
 //   const fetchLastOrder = async (userId) => {
 //     try {
 //       const token = localStorage.getItem('token');
-//       const orderResponse = await axios.get(`http://localhost:8081/api/orders`, {
+//       const orderResponse = await axios.get(`http://13.200.241.188:9090/api/orders`, {
 //         headers: { Authorization: `Bearer ${token}` }
 //       });
 //       const userOrders = orderResponse.data.filter(order => order.customerId === userId);
@@ -72,7 +72,7 @@
 //   const checkCartNotEmpty = async (userId) => {
 //     try {
 //       const token = localStorage.getItem('token');
-//       const response = await axios.get(`http://localhost:8089/carts/cart/${userId}`, {
+//       const response = await axios.get(`http://13.200.241.188:9090/carts/cart/${userId}`, {
 //         headers: { Authorization: `Bearer ${token}` }
 //       });
 //       return response.data.cartItems.length > 0;
@@ -85,7 +85,7 @@
 //   const fetchUserAddress = async (userId) => {
 //     try {
 //       const token = localStorage.getItem('token');
-//       const response = await axios.get(`http://localhost:8087/api/addresses/user/${userId}`, {
+//       const response = await axios.get(`http://13.200.241.188:9090/api/addresses/user/${userId}`, {
 //         headers: { Authorization: `Bearer ${token}` }
 //       });
 //       return response.data;
@@ -125,7 +125,7 @@
 //     };
 //     try {
 //       const response = await axios.post(
-//         "http://localhost:8081/api/orders/create-razorpay-order",
+//         "http://13.200.241.188:9090/api/orders/create-razorpay-order",
 //         { amount: paymentAmount }
 //       );
 
@@ -149,7 +149,7 @@
 //             };
 
 //             await axios.post(
-//               "http://localhost:8081/api/orders/save",
+//               "http://13.200.241.188:9090/api/orders/save",
 //               paymentDetailsToSave
 //             );
 
@@ -315,7 +315,7 @@ const OrderConfirm = () => {
   const fetchUser = async () => {
     try {
       const token = localStorage.getItem('token');
-      const userResponse = await axios.get('http://localhost:8087/api/auth/users', {
+      const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const user = userResponse.data.find(user => user.email === userEmail);
@@ -332,7 +332,7 @@ const OrderConfirm = () => {
   const fetchCartDetails = async (userId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:8089/carts/cart/${userId}`, {
+      const response = await axios.get(`http://13.200.241.188:9090/carts/cart/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
   
@@ -363,7 +363,7 @@ const OrderConfirm = () => {
   const fetchUserAddress = async (userId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:8087/api/addresses/user/${userId}`, {
+      const response = await axios.get(`http://13.200.241.188:9090/api/addresses/user/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return response.data;
@@ -418,7 +418,7 @@ const OrderConfirm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8081/api/orders/create-razorpay-order",
+        "http://13.200.241.188:9090/api/orders/create-razorpay-order",
         { amount: paymentAmount }
       );
 
@@ -508,7 +508,7 @@ const OrderConfirm = () => {
   const placeOrder = async (userId, addressId, paymentDetails) => {
     try {
       const token = localStorage.getItem('token');
-      const orderResponse = await axios.post('http://localhost:8081/api/orders', {
+      const orderResponse = await axios.post('http://13.200.241.188:9090/api/orders', {
         customerId: userId,
         addressId: addressId,
         paymentDetails: paymentDetails

@@ -18,7 +18,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     setLoading(true); // Start loading indicator
     try {
-      await axios.post('http://localhost:8087/api/auth/send-otp', { email });
+      await axios.post('http://13.200.241.188:9090/api/auth/send-otp', { email });
       setSuccess('OTP has been sent to your email.');
       setError('');
       setStage('reset');
@@ -39,11 +39,11 @@ const ForgotPassword = () => {
 
     setLoading(true); // Start loading indicator
     try {
-      await axios.post('http://localhost:8087/api/auth/reset-password', { email, otp, newPassword });
+      await axios.post('http://13.200.241.188:9090/api/auth/reset-password', { email, otp, newPassword });
       setSuccess('Password reset successful. You can now sign in.');
       setError('');
       setStage('email');
-      window.location.href = 'http://localhost:3000/signin';
+      window.location.href = 'http://13.200.241.188:9090/signin';
     } catch (err) {
       setError('Incorrect OTP.');
       setSuccess('');

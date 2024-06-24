@@ -15,7 +15,7 @@ const SidebarInven = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:8085/api/categories');
+        const response = await axios.get('http://13.200.241.188:9090/api/categories');
         setCategories(response.data);
       } catch (err) {
         console.error('Error fetching categories:', err);
@@ -24,7 +24,7 @@ const SidebarInven = () => {
 
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:8088/inventory/all-inventory');
+        const response = await axios.get('http://13.200.241.188:9090/inventory/all-inventory');
         setProducts(response.data);
       } catch (err) {
         console.error('Error fetching products:', err);
@@ -57,7 +57,7 @@ const SidebarInven = () => {
   const handleUpdateSuccess = async () => {
     // Refetch products after updating stock
     try {
-      const response = await axios.get('http://localhost:8088/inventory/all-inventory');
+      const response = await axios.get('http://13.200.241.188:9090/inventory/all-inventory');
       setProducts(response.data);
     } catch (err) {
       console.error('Error refetching products:', err);

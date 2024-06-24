@@ -20,13 +20,13 @@ const Cart = () => {
     const fetchCartItems = async () => {
       try {
         const token = localStorage.getItem('token');
-        const userResponse = await axios.get('http://localhost:8087/api/auth/users', {
+        const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
           headers: { Authorization: `Bearer ${token}` }
         });
         const user = userResponse.data.find(user => user.email === userEmail);
         const userId = user.id;
 
-        const response = await axios.get(`http://localhost:8089/carts/cart/${userId}`, {
+        const response = await axios.get(`http://13.200.241.188:9090/carts/cart/${userId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const items = response.data.cartItems.reduce((acc, item) => {
@@ -41,7 +41,7 @@ const Cart = () => {
         setCartItems(items);
 
         // Fetch inventory data
-        const inventoryResponse = await axios.get('http://localhost:8088/inventory/all-inventory', {
+        const inventoryResponse = await axios.get('http://13.200.241.188:9090/inventory/all-inventory', {
           headers: { Authorization: `Bearer ${token}` }
         });
         const inventoryData = inventoryResponse.data.reduce((acc, item) => {
@@ -60,13 +60,13 @@ const Cart = () => {
   const handleRemoveFromCart = async (productId) => {
     try {
       const token = localStorage.getItem('token');
-      const userResponse = await axios.get('http://localhost:8087/api/auth/users', {
+      const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const user = userResponse.data.find(user => user.email === userEmail);
       const userId = user.id;
 
-      const response = await axios.delete('http://localhost:8089/carts/cart/product/remove', {
+      const response = await axios.delete('http://13.200.241.188:9090/carts/cart/product/remove', {
         headers: { Authorization: `Bearer ${token}` },
         data: { userId, productId }
       });
@@ -85,13 +85,13 @@ const Cart = () => {
   const handleIncreaseQuantity = async (productId) => {
     try {
       const token = localStorage.getItem('token');
-      const userResponse = await axios.get('http://localhost:8087/api/auth/users', {
+      const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const user = userResponse.data.find(user => user.email === userEmail);
       const userId = user.id;
 
-      const response = await axios.put('http://localhost:8089/carts/cart/product/increase', {
+      const response = await axios.put('http://13.200.241.188:9090/carts/cart/product/increase', {
         userId,
         productId
       }, {
@@ -114,13 +114,13 @@ const Cart = () => {
   const handleDecreaseQuantity = async (productId) => {
     try {
       const token = localStorage.getItem('token');
-      const userResponse = await axios.get('http://localhost:8087/api/auth/users', {
+      const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const user = userResponse.data.find(user => user.email === userEmail);
       const userId = user.id;
 
-      const response = await axios.put('http://localhost:8089/carts/cart/product/decrease', {
+      const response = await axios.put('http://13.200.241.188:9090/carts/cart/product/decrease', {
         userId,
         productId
       }, {
@@ -143,13 +143,13 @@ const Cart = () => {
   const handleClearCart = async () => {
     try {
       const token = localStorage.getItem('token');
-      const userResponse = await axios.get('http://localhost:8087/api/auth/users', {
+      const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const user = userResponse.data.find(user => user.email === userEmail);
       const userId = user.id;
 
-      const response = await axios.delete(`http://localhost:8089/carts/cart/clear/${userId}`, {
+      const response = await axios.delete(`http://13.200.241.188:9090/carts/cart/clear/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

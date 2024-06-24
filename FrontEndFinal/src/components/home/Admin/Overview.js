@@ -21,7 +21,7 @@ const Overview = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get('http://localhost:8087/api/auth/users');
+      const response = await axios.get('http://13.200.241.188:9090/api/auth/users');
       setUserData(response.data);
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -30,7 +30,7 @@ const Overview = () => {
 
   const fetchProductData = async () => {
     try {
-      const response = await axios.get('http://localhost:8085/api/products/product');
+      const response = await axios.get('http://13.200.241.188:9090/api/products/product');
       setProductData(response.data);
     } catch (error) {
       console.error('Error fetching product data:', error);
@@ -39,7 +39,7 @@ const Overview = () => {
 
   const fetchOrderData = async () => {
     try {
-      const response = await axios.get('http://localhost:8081/api/orders');
+      const response = await axios.get('http://13.200.241.188:9090/api/orders');
       setOrderData(response.data);
     } catch (error) {
       console.error('Error fetching order data:', error);
