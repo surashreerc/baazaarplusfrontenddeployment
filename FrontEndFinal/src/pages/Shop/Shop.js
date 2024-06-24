@@ -30,10 +30,10 @@ const Shop = () => {
       try {
         const token = localStorage.getItem('token');
         const [productResponse, stockResponse] = await Promise.all([
-          axios.get('http://13.200.241.188:9090/api/categories', {
+          axios.get('https://13.200.241.188:9090/api/categories', {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          axios.get('http://13.200.241.188:9090/inventory/all-inventory', {
+          axios.get('https://13.200.241.188:9090/inventory/all-inventory', {
             headers: { Authorization: `Bearer ${token}` }
           })
         ]);
@@ -82,13 +82,13 @@ const Shop = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
+      const userResponse = await axios.get('https://13.200.241.188:9090/api/auth/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const user = userResponse.data.find(user => user.email === userEmail);
       const userId = user.id;
 
-      await axios.post('http://13.200.241.188:9090/carts/cart/product/add', {
+      await axios.post('https://13.200.241.188:9090/carts/cart/product/add', {
         userId,
         productId: product.id,
       }, {
