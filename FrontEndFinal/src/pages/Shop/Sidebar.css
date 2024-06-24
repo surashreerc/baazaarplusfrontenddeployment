@@ -1,0 +1,63 @@
+/* Sidebar.css */
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+
+.sidebar h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar input[type='checkbox'] {
+  display: none; /* Hide the actual checkbox */
+}
+
+.sidebar label {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
+
+.sidebar label:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar input[type='checkbox']:checked + label:before {
+  background-color: #e6be8a; /* Change background color when checkbox is checked */
+}
+
+/* Style the checked state of the checkbox */
+.sidebar input[type='checkbox']:checked + label:after {
+  content: '\2713'; /* Unicode checkmark character */
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  color: #fff;
+  font-size: 14px;
+}
