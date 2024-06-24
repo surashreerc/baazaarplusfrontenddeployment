@@ -114,12 +114,10 @@ const Profile = () => {
     <div className='profile'>
       <Header />
       <div className="profile-container">
-        
         <div className="profile-card">
           <div className="profile-image-container">
             <img src="https://cdn-icons-png.flaticon.com/512/10337/10337609.png" alt="Profile Icon" className="profile-icon" />
-            <br></br>    
-                <div className="profile-info">
+            <div className="profile-info">
               <h2 className='he'>Your Information:</h2>
               <p>Username: {user && user.username}</p>
               <p>Email: {user && user.email}</p>
