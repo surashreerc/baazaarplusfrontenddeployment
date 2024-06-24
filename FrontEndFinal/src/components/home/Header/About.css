@@ -1,0 +1,38 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-image: url("https://cdn.shopify.com/s/files/1/0594/8011/3337/files/AestheticDecor39-SMALL_1512x.jpg"); /* Replace with your background image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.about-content {
+    background-color: rgba(255, 255, 255, 0.8); /* Light shading background */
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 16px;
+}
+
+p, ul {
+    color: #555;
+    line-height: 1.6;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
