@@ -28,6 +28,7 @@ const Shop = () => {
   useEffect(() => {
     const fetchProductsAndStock = async () => {
       try {
+        const token = localStorage.getItem('token');
         const [productResponse, stockResponse] = await Promise.all([
           axios.get('http://13.200.241.188:9090/api/categories', {
             headers: { Authorization: `Bearer ${token}` }
