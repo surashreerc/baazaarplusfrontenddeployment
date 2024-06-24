@@ -24,7 +24,7 @@ const SignIn = () => {
     e.preventDefault();
     setLoading(true); // Start loading indicator
     try {
-      const response = await axios.post('https://13.200.241.188:9090/api/auth/signin', {
+      const response = await axios.post('https://api.baazaarplus.xyz/api/auth/signin', {
         email,
         password
       });
@@ -35,7 +35,7 @@ const SignIn = () => {
       const decodedToken = jwtDecode(token);
  
       // Fetch user details with the token
-      const userResponse = await axios.get('https://13.200.241.188:9090/api/auth/users', {
+      const userResponse = await axios.get('https://api.baazaarplus.xyz/api/auth/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
      
