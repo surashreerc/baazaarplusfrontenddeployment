@@ -65,6 +65,7 @@ const AddCategoryModal = ({ isOpen, onRequestClose, onCategoryAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem('token');
       const response = await axios.post('https://api.baazaarplus.xyz/api/categories', { 
         name: categoryName,
         description: categoryDescription,
