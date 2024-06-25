@@ -36,7 +36,7 @@ const SignIn = () => {
  
       // Fetch user details with the token
       const userResponse = await axios.get('https://api.baazaarplus.xyz/api/auth/users', {
-        headers: { Authorization: `Bearer ${token}` }
+        //headers: { Authorization: `Bearer ${token}` }
       });
      
       const user = userResponse.data.find(user => user.email === email);
