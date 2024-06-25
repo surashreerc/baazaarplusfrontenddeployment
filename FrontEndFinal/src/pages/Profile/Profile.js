@@ -23,8 +23,8 @@ const Profile = () => {
     if (user) {
       try {
         const token = localStorage.getItem('token');
-        const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
-          headers: { Authorization: `Bearer ${token}` }
+        const userResponse = await axios.get('https://api.baazaarplus.xyz/api/auth/users', {
+          //headers: { Authorization: `Bearer ${token}` }
         });
 
         const loggedInUser = userResponse.data.find(userItem => userItem.email === userEmail); // Use userEmail from context
@@ -36,7 +36,9 @@ const Profile = () => {
 
         const userId = loggedInUser.id;
 
-        const addressResponse = await axios.get(`http://13.200.241.188:9090/api/addresses/user/${userId}`);
+        const addressResponse = await axios.get(`https://api.baazaarplus.xyz/api/addresses/user/${userId}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         setAddress(addressResponse.data[0]); // Assuming the first address is the user's address
         setFormData({
           userId: userId,
@@ -55,7 +57,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get('http://13.200.241.188:9090/api/auth/users');
+        const response = await axios.get('https://api.baazaarplus.xyz/api/auth/users');
         const loggedInUser = response.data.find(userItem => userItem.email === userEmail); // Use userEmail from context
         setUser(loggedInUser);
         setFormData((prevFormData) => ({ ...prevFormData, userId: loggedInUser.id }));
@@ -79,17 +81,22 @@ const Profile = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      const token = localStorage.getItem('token');
       if (address) {
         // Update existing address
-        await axios.put(`http://13.200.241.188:9090/api/addresses/address/update/${address.addressId}`, {
+        await axios.put(`https://api.baazaarplus.xyz/api/addresses/address/update/${address.addressId}`, {
           line1: formData.line1,
           line2: formData.line2,
           state: formData.state,
           pincode: formData.pincode
+        }, {
+          headers: { Authorization: `Bearer ${token}` }
         });
       } else {
         // Add new address
-        await axios.post('http://13.200.241.188:9090/api/addresses/address/add', formData);
+        await axios.post('https://api.baazaarplus.xyz/api/addresses/address/add', formData, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
       }
       fetchUserAddress();
       setShowAddressForm(false); // Reset the state after successfully adding or updating the address

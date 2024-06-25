@@ -19,8 +19,8 @@ const MyOrder = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const userResponse = await axios.get('http://13.200.241.188:9090/api/auth/users', {
-          headers: { Authorization: `Bearer ${token}` }
+        const userResponse = await axios.get('https://api.baazaarplus.xyz/api/auth/users', {
+          //headers: { Authorization: `Bearer ${token}` }
         });
         return userResponse.data.find(user => user.email === userEmail);
       } catch (err) {
@@ -32,8 +32,8 @@ const MyOrder = () => {
 
     const fetchUserOrders = async (userId) => {
       try {
-        const orderResponse = await axios.get(`http://13.200.241.188:9090/api/orders`, {
-          headers: { Authorization: `Bearer ${token}`, 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json;charset=UTF-8' }
+        const orderResponse = await axios.get(`https://api.baazaarplus.xyz/api/orders`, {
+          headers: { Authorization: `Bearer ${token}`}
         });
         const userOrders = orderResponse.data.filter(order => order.customerId === userId);
 
@@ -46,7 +46,7 @@ const MyOrder = () => {
         setRatingForm(prev => ({ ...prev, userId: userId }));
 
         // Fetch ratings to determine which orders have been rated
-        const ratedOrdersResponse = await axios.get(`http://13.200.241.188:9090/api/ratings/user/${userId}`, {
+        const ratedOrdersResponse = await axios.get(`https://api.baazaarplus.xyz/api/ratings/user/${userId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const ratedProductIds = new Set(ratedOrdersResponse.data.map(rating => rating.productId));
@@ -61,7 +61,9 @@ const MyOrder = () => {
     const fetchProductImages = async (productIds) => {
       try {
         const imageRequests = productIds.map(async productId => {
-          const productResponse = await axios.get(`http://13.200.241.188:9090/api/products/product/${productId}`);
+          const productResponse = await axios.get(`https://api.baazaarplus.xyz/api/products/product/${productId}`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
           return { productId, imageUrl: productResponse.data.image };
         });
         const images = await Promise.all(imageRequests);
@@ -105,14 +107,14 @@ const MyOrder = () => {
 
       if (hasRated) {
         // Update rating if already rated
-        await axios.put('http://13.200.241.188:9090/api/ratings/rating/updateRating', ratingData, {
-          headers: { Authorization: `Bearer ${token}`, 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json;charset=UTF-8' }
+        await axios.put('https://api.baazaarplus.xyz/api/ratings/rating/updateRating', ratingData, {
+          headers: { Authorization: `Bearer ${token}`}
         });
         alert('Rating updated successfully!');
       } else {
         // Add new rating if not rated before
-        await axios.post('http://13.200.241.188:9090/api/ratings/rating/addRating', ratingData, {
-          headers: { Authorization: `Bearer ${token}`, 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json;charset=UTF-8' }
+        await axios.post('https://api.baazaarplus.xyz/api/ratings/rating/addRating', ratingData, {
+          headers: { Authorization: `Bearer ${token}`}
         });
         alert('Thank you for your rating! We appreciate it.');
       }
@@ -134,7 +136,7 @@ const MyOrder = () => {
     
     try {
       // Fetch ratings by user ID to determine if the user has already rated the product
-      const ratedOrdersResponse = await axios.get(`http://13.200.241.188:9090/api/ratings/rating/user/${ratingForm.userId}`, {
+      const ratedOrdersResponse = await axios.get(`https://api.baazaarplus.xyz/api/ratings/rating/user/${ratingForm.userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const hasRatedAllItems = order.items.every(item => {
