@@ -11,7 +11,7 @@ const BestSeller = () => {
     const fetchTopProducts = async () => {
       try {
         // Fetch the first 4 products
-        const response = await axios.get('http://13.200.241.188:9090/api/products/product');
+        const response = await axios.get('https://api.baazaarplus.xyz/api/products/product');
         const topProducts = response.data.slice(0, 4);
 
         // Set the top products to state
