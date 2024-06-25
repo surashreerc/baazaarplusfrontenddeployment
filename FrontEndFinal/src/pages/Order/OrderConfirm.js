@@ -305,6 +305,7 @@ const OrderConfirm = () => {
   const [cartDetails, setCartDetails] = useState(null); // New state for cart details
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
 
   useEffect(() => {
@@ -314,7 +315,7 @@ const OrderConfirm = () => {
 
   const fetchUser = async () => {
     try {
-      const token = localStorage.getItem('token');
+      
       const userResponse = await axios.get('https://api.baazaarplus.xyz/api/auth/users', {
         //headers: { Authorization: `Bearer ${token}` }
       });
@@ -331,7 +332,7 @@ const OrderConfirm = () => {
 
   const fetchCartDetails = async (userId) => {
     try {
-      const token = localStorage.getItem('token');
+      
       const response = await axios.get(`https://api.baazaarplus.xyz/carts/cart/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -362,7 +363,7 @@ const OrderConfirm = () => {
 
   const fetchUserAddress = async (userId) => {
     try {
-      const token = localStorage.getItem('token');
+      
       const response = await axios.get(`https://api.baazaarplus.xyz/api/addresses/user/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -417,7 +418,7 @@ const OrderConfirm = () => {
 
 
     try {
-      const token = localStorage.getItem('token');
+      
       const response = await axios.post(
         "https://api.baazaarplus.xyz/api/orders/create-razorpay-order",
         { amount: paymentAmount },  // This is the payload
@@ -511,7 +512,7 @@ const OrderConfirm = () => {
 
   const placeOrder = async (userId, addressId, paymentDetails) => {
     try {
-      const token = localStorage.getItem('token');
+      
       const orderResponse = await axios.post('https://api.baazaarplus.xyz/api/orders', {
         customerId: userId,
         addressId: addressId,
