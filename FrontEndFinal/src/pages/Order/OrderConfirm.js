@@ -419,10 +419,11 @@ const OrderConfirm = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        "https://api.baazaarplus.xyz/api/orders/create-razorpay-order", {
+        "https://api.baazaarplus.xyz/api/orders/create-razorpay-order",
+        { amount: paymentAmount },  // This is the payload
+        {
           headers: { Authorization: `Bearer ${token}` }
-        },
-        { amount: paymentAmount }
+        }
       );
 
 
