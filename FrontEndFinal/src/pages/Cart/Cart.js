@@ -21,7 +21,7 @@ const Cart = () => {
       try {
         const token = localStorage.getItem('token');
         const userResponse = await axios.get('https://api.baazaarplus.xyz/api/auth/users', {
-          headers: { Authorization: `Bearer ${token}` }
+          //headers: { Authorization: `Bearer ${token}` }
         });
         const user = userResponse.data.find(user => user.email === userEmail);
         const userId = user.id;
@@ -42,7 +42,7 @@ const Cart = () => {
 
         // Fetch inventory data
         const inventoryResponse = await axios.get('https://api.baazaarplus.xyz/inventory/all-inventory', {
-          headers: { Authorization: `Bearer ${token}` }
+          //headers: { Authorization: `Bearer ${token}` }
         });
         const inventoryData = inventoryResponse.data.reduce((acc, item) => {
           acc[item.productId] = item.stock;
@@ -61,7 +61,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem('token');
       const userResponse = await axios.get('https://api.baazaarplus.xyz/api/auth/users', {
-        headers: { Authorization: `Bearer ${token}` }
+        //headers: { Authorization: `Bearer ${token}` }
       });
       const user = userResponse.data.find(user => user.email === userEmail);
       const userId = user.id;
@@ -86,7 +86,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem('token');
       const userResponse = await axios.get('https://api.baazaarplus.xyz/api/auth/users', {
-        headers: { Authorization: `Bearer ${token}` }
+        //headers: { Authorization: `Bearer ${token}` }
       });
       const user = userResponse.data.find(user => user.email === userEmail);
       const userId = user.id;
@@ -144,7 +144,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem('token');
       const userResponse = await axios.get('https://api.baazaarplus.xyz/api/auth/users', {
-        headers: { Authorization: `Bearer ${token}` }
+        //headers: { Authorization: `Bearer ${token}` }
       });
       const user = userResponse.data.find(user => user.email === userEmail);
       const userId = user.id;
