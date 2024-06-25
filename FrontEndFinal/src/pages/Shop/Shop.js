@@ -31,7 +31,7 @@ const Shop = () => {
         const token = localStorage.getItem('token');
         const [productResponse, stockResponse] = await Promise.all([
           axios.get('https://api.baazaarplus.xyz/api/categories', {
-            headers: { Authorization: `Bearer ${token}` }
+            //headers: { Authorization: `Bearer ${token}` }
           }),
           axios.get('https://api.baazaarplus.xyz/inventory/all-inventory', {
             headers: { Authorization: `Bearer ${token}` }
