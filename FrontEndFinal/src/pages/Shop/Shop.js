@@ -34,7 +34,7 @@ const Shop = () => {
             //headers: { Authorization: `Bearer ${token}` }
           }),
           axios.get('https://api.baazaarplus.xyz/inventory/all-inventory', {
-            headers: { Authorization: `Bearer ${token}` }
+            //headers: { Authorization: `Bearer ${token}` }
           })
         ]);
 
