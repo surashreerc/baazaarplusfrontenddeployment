@@ -9,6 +9,7 @@ const ProductModal = ({ isOpen, onRequestClose, categories }) => {
   const [categoryId, setCategoryId] = useState(0);
   const [stock, setStock] = useState(0);
   const [productImage, setProductImage] = useState(null);
+  
 
   const modalStyles = {
     content: {
@@ -77,7 +78,7 @@ const ProductModal = ({ isOpen, onRequestClose, categories }) => {
       formData.append('stock', stock);
       formData.append('productImage', productImage);
 
-      const response = await axios.post('http://13.200.241.188:9090/api/products/product', formData, {
+      const response = await axios.post('https://api.baazaarplus.xyz/api/products/product', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

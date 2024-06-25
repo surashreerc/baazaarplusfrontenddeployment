@@ -23,7 +23,7 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true); // Start loading indicator
     try {
-      const response = await axios.post('http://13.200.241.188:9090/api/auth/signup', {
+      const response = await axios.post('https://api.baazaarplus.xyz/api/auth/signup', {
         username,
         email,
         password
@@ -45,7 +45,7 @@ const SignUp = () => {
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://13.200.241.188:9090/api/auth/verify-otp', {
+      const response = await axios.post('https://api.baazaarplus.xyz/api/auth/verify-otp', {
         email,
         otp
       });

@@ -12,12 +12,13 @@ const EditProductModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
   const [productIds, setProductIds] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchProductIds = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://13.200.241.188:9090/api/products/product');
+        const response = await axios.get('https://api.baazaarplus.xyz/api/products/product');
         const productIds = response.data.map((product) => product.id);
         setProductIds(productIds);
       } catch (error) {
@@ -32,7 +33,7 @@ const EditProductModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://13.200.241.188:9090/api/categories');
+        const response = await axios.get('https://api.baazaarplus.xyz/api/categories');
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -45,7 +46,9 @@ const EditProductModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
     if (!selectedProductId) return;
 
     try {
-      const response = await axios.get(`http://13.200.241.188:9090/api/products/product/${selectedProductId}`);
+      const response = await axios.get(`https://api.baazaarplus.xyz/api/products/product/${selectedProductId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       const product = response.data;
       setName(product.name);
       setDescription(product.description);
@@ -143,13 +146,11 @@ const EditProductModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
       }
 
       const response = await axios.put(
-        `http://13.200.241.188:9090/api/products/product/${selectedProductId}`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
+        `https://api.baazaarplus.xyz/api/products/product/${selectedProductId}`,
+        formData , {
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
         }
+        
       );
 
       console.log('Product updated:', response.data);

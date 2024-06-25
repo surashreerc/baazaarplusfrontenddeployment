@@ -7,6 +7,7 @@ const UpdateStockModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
   const [productIds, setProductIds] = useState([]);
   const [stock, setStock] = useState(0);
   const [loading, setLoading] = useState(false);
+  const token = localStorage.getItem('token');
 
   const modalStyles = {
     content: {
@@ -46,7 +47,7 @@ const UpdateStockModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
     const fetchProductIds = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://13.200.241.188:9090/api/products/product');
+        const response = await axios.get('https://api.baazaarplus.xyz/api/products/product');
         const productIds = response.data.map((product) => product.id);
         setProductIds(productIds);
       } catch (error) {
@@ -66,7 +67,9 @@ const UpdateStockModal = ({ isOpen, onRequestClose, onUpdateSuccess }) => {
         productId: productId,
         stock: stock,
       };
-      await axios.post('http://13.200.241.188:9090/inventory/updateInventory', requestBody);
+      await axios.post('https://api.baazaarplus.xyz/inventory/updateInventory', requestBody, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       console.log('Stock updated successfully');
       onUpdateSuccess();
       onRequestClose();

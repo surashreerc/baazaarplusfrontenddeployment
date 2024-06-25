@@ -25,7 +25,7 @@ const AddProduct = () => {
       try {
         const token = localStorage.getItem('token');
         const response = await axios.get('https://api.baazaarplus.xyz/api/categories', {
-          headers: { Authorization: `Bearer ${token}` }
+          //headers: { Authorization: `Bearer ${token}` }
         });
         const categories = response.data;
 

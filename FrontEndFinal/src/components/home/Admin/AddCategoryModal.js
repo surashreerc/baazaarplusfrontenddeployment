@@ -70,7 +70,7 @@ const AddCategoryModal = ({ isOpen, onRequestClose, onCategoryAdded }) => {
         name: categoryName,
         description: categoryDescription,
       }, {
-        headers: { Authorization: `Bearer ${token}` }
+        //headers: { Authorization: `Bearer ${token}` }
       });
       console.log('Category added:', response.data);
       setCategoryName('');

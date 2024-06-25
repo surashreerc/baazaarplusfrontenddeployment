@@ -11,6 +11,7 @@ const Overview = () => {
   const [userData, setUserData] = useState(null);
   const [productData, setProductData] = useState(null);
   const [orderData, setOrderData] = useState(null);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     // Fetch data when the component mounts
@@ -21,7 +22,7 @@ const Overview = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get('http://13.200.241.188:9090/api/auth/users');
+      const response = await axios.get('https://api.baazaarplus.xyz/api/auth/users');
       setUserData(response.data);
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -30,7 +31,7 @@ const Overview = () => {
 
   const fetchProductData = async () => {
     try {
-      const response = await axios.get('http://13.200.241.188:9090/api/products/product');
+      const response = await axios.get('https://api.baazaarplus.xyz/api/products/product');
       setProductData(response.data);
     } catch (error) {
       console.error('Error fetching product data:', error);
@@ -39,7 +40,9 @@ const Overview = () => {
 
   const fetchOrderData = async () => {
     try {
-      const response = await axios.get('http://13.200.241.188:9090/api/orders');
+      const response = await axios.get('https://api.baazaarplus.xyz/api/orders', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setOrderData(response.data);
     } catch (error) {
       console.error('Error fetching order data:', error);

@@ -9,7 +9,7 @@ const DeleteCategoryModal = ({ isOpen, onRequestClose, onDeleteSuccess }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://13.200.241.188:9090/api/categories');
+        const response = await axios.get('https://api.baazaarplus.xyz/api/categories');
         setCategories(response.data);
       } catch (err) {
         console.error('Error fetching categories:', err);
@@ -55,12 +55,15 @@ const DeleteCategoryModal = ({ isOpen, onRequestClose, onDeleteSuccess }) => {
 
   const handleDelete = async () => {
     try {
+      const token = localStorage.getItem('token');
       if (!selectedCategoryId) {
         console.error('No category selected.');
         return;
       }
 
-      await axios.delete(`http://13.200.241.188:9090/api/categories/${selectedCategoryId}`);
+      await axios.delete(`https://api.baazaarplus.xyz/api/categories/${selectedCategoryId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       onDeleteSuccess();
       onRequestClose();
       window.location.reload(); // Refresh the page

@@ -6,6 +6,7 @@ const DeleteProductModal = ({ isOpen, onRequestClose, onDeleteSuccess }) => {
   const [productId, setProductId] = useState('');
   const [productIds, setProductIds] = useState([]);
   const [loading, setLoading] = useState(false);
+  const token = localStorage.getItem('token');
 
   const modalStyles = {
     content: {
@@ -45,7 +46,9 @@ const DeleteProductModal = ({ isOpen, onRequestClose, onDeleteSuccess }) => {
     const fetchProductIds = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://13.200.241.188:9090/api/products/product');
+        const response = await axios.get('https://api.baazaarplus.xyz/api/products/product', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         const productIds = response.data.map((product) => product.id);
         setProductIds(productIds);
       } catch (error) {
@@ -59,7 +62,9 @@ const DeleteProductModal = ({ isOpen, onRequestClose, onDeleteSuccess }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://13.200.241.188:9090/api/products/product/${productId}`);
+      await axios.delete(`https://api.baazaarplus.xyz/api/products/product/${productId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       onDeleteSuccess();
       onRequestClose();
       window.location.reload(); // Refresh the page

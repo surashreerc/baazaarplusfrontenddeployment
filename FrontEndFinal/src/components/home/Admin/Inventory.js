@@ -20,13 +20,14 @@ const Inventory = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchProductsAndInventory = async () => {
       try {
         const [productsResponse, inventoryResponse] = await Promise.all([
-          axios.get('http://13.200.241.188:9090/api/categories'),
-          axios.get('http://13.200.241.188:9090/inventory/all-inventory')
+          axios.get('https://api.baazaarplus.xyz/api/categories'),
+          axios.get('https://api.baazaarplus.xyz/inventory/all-inventory')
         ]);
 
         const categories = productsResponse.data;
@@ -84,7 +85,9 @@ const Inventory = () => {
     }
 
     try {
-      const response = await axios.get(`http://13.200.241.188:9090/api/products/product/search?query=${searchQuery}`);
+      const response = await axios.get(`https://api.baazaarplus.xyz/api/products/product/search?query=${searchQuery}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setFilteredProducts(response.data);
     } catch (err) {
       setError('Failed to search products. Please try again later.');
