@@ -65,9 +65,11 @@ const AddCategoryModal = ({ isOpen, onRequestClose, onCategoryAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://13.200.241.188:9090/api/categories', { 
+      const response = await axios.post('https://api.baazaarplus.xyz/api/categories', { 
         name: categoryName,
         description: categoryDescription,
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
       });
       console.log('Category added:', response.data);
       setCategoryName('');

@@ -23,7 +23,10 @@ const AddProduct = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://13.200.241.188:9090/api/categories');
+        const token = localStorage.getItem('token');
+        const response = await axios.get('https://api.baazaarplus.xyz/api/categories', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         const categories = response.data;
 
         // Extract all products from the categories
@@ -72,7 +75,10 @@ const AddProduct = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://13.200.241.188:9090/api/products/product/search?query=${searchQuery}`);
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`https://api.baazaarplus.xyz/api/products/product/search?query=${searchQuery}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setFilteredProducts(response.data);
     } catch (err) {
       setError('Failed to search products. Please try again later.');

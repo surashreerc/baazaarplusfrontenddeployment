@@ -12,7 +12,7 @@ const NewArrivals = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://13.200.241.188:9090/api/products/product');
+        const response = await axios.get('https://api.baazaarplus.xyz/api/products/product');
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching new arrivals:', error);
