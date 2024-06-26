@@ -220,6 +220,11 @@
   transform: scale(1.05);
 }
 
+.proceed-to-checkout-btn-2:hover {
+  background-color: #000;
+  transform: scale(1.05);
+}
+
 .empty-cart {
   display: flex;
   flex-direction: column;
@@ -289,6 +294,7 @@
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s;
+  font-size: 18px;
 }
 
 .clear-cart-btn:hover {
@@ -296,7 +302,8 @@
 }
 
 .proceed-to-checkout-btn a, 
-.empty-cart-container a {
+.empty-cart-container a ,
+.proceed-to-checkout-btn-2 a{
   text-decoration: none; /* Remove underline */
   color: inherit; /* Inherit color from parent */
 }

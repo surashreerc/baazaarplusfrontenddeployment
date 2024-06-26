@@ -217,7 +217,7 @@ const Cart = () => {
             <div className="empty-cart-container">
               <h1>Your cart is empty</h1>
               <p>Add some products to your cart to continue shopping.</p>
-             <Link to = "/shop"> <button className="proceed-to-checkout-btn">Continue Shopping</button></Link>
+             <Link to = "/shop"> <button className="proceed-to-checkout-btn-2">Continue Shopping</button></Link>
             </div>
           </div>
           
