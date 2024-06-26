@@ -66,7 +66,7 @@ const Footer = () => {
           <FooterListTitle title="Payment partner" />
           <ul className="flex flex-col gap-2">
             <p>
-            <SiRazorpay  size={24}/> Razorpay
+            <img src="https://i.ibb.co/4dHGFCZ/razorpay.png" alt="Razorpay Logo"/>
             </p>
             
           </ul>
