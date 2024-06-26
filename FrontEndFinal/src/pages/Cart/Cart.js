@@ -168,8 +168,10 @@ const Cart = () => {
   };
 
   return (
-    <div className='cart'>
+    <div>
       <Header />
+    <div className='cart'>
+      
       <div className='cart-body'>
       
       <div className="cart-container">
@@ -222,7 +224,9 @@ const Cart = () => {
         )}
       </div>
       </div>
-      <Footer />
+      
+    </div>
+    <Footer />
     </div>
   );
 };
