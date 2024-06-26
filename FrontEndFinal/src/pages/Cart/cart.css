@@ -211,6 +211,9 @@
   transition: background-color 0.3s;
   margin-top: 20px; 
 }
+.proceed-to-checkout-btn > a{
+  text-decoration: none;
+}
 
 .proceed-to-checkout-btn:hover {
   background-color: #000;
