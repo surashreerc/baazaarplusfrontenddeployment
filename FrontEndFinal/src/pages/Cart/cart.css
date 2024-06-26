@@ -294,3 +294,9 @@
 .clear-cart-btn:hover {
   background-color:black;
 }
+
+.proceed-to-checkout-btn a, 
+.empty-cart-container a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent */
+}
