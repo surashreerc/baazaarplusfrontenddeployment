@@ -161,77 +161,79 @@ const MyOrder = () => {
   return (
     <div>
       <Header />
-    <div className='myOrder'>
-      
-      <div className='order-back'>
-      <div className="order-container">
-        {orders.map(order => (
-          <div className="order" key={order.id}>
-            <h2>Order ID: {order.id}</h2>
-            <p>Order Date: {new Date(order.orderDate).toLocaleString()}</p>
-            <p>Status: {order.status}</p>
-            <p>Total Amount: ₹{order.orderAmount}</p>
-            <h3>Items:</h3>
-            <ul>
-              {order.items.map(item => (
-                <li key={item.orderItemId}>
-                  <div className="order-item">
-                    <img src={productImages[item.productId]} alt={item.name} className="order-item-image" />
-                    <div className="order-item-details">
-                      <h4>{item.name}</h4>
-                      <p>Price: ₹{item.price.toFixed(2)}</p>
-                      <p>Quantity: {item.quantity}</p>
+      <div className='myOrder'>
+        <div className='order-back'>
+          <div className="order-container">
+            {orders.length === 0 ? (
+              <p>You have not ordered anything yet</p>
+            ) : (
+              orders.map(order => (
+                <div className="order" key={order.id}>
+                  <h2>Order ID: {order.id}</h2>
+                  <p>Order Date: {new Date(order.orderDate).toLocaleString()}</p>
+                  <p>Status: {order.status}</p>
+                  <p>Total Amount: ₹{order.orderAmount}</p>
+                  <h3>Items:</h3>
+                  <ul>
+                    {order.items.map(item => (
+                      <li key={item.orderItemId}>
+                        <div className="order-item">
+                          <img src={productImages[item.productId]} alt={item.name} className="order-item-image" />
+                          <div className="order-item-details">
+                            <h4>{item.name}</h4>
+                            <p>Price: ₹{item.price.toFixed(2)}</p>
+                            <p>Quantity: {item.quantity}</p>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  {selectedOrder === order.id && (
+                    <div className="rating-form">
+                      <h3>Submit Your Rating</h3>
+                      <form onSubmit={submitRating}>
+                        <input type="hidden" name="userId" value={ratingForm.userId} readOnly />
+                        <label>
+                          Product:
+                          <select name="productId" value={ratingForm.productId} onChange={handleRatingChange}>
+                            {order.items.map(item => (
+                              !ratedOrders.has(item.productId) && (
+                                <option key={item.productId} value={item.productId}>{item.name}</option>
+                              )
+                            ))}
+                          </select>
+                        </label>
+                        <label>
+                          Rating:
+                          <input type="number" name="rating" min="1" max="5" value={ratingForm.rating} onChange={handleRatingChange} required />
+                        </label>
+                        <label>
+                          Review:
+                          <textarea name="review" value={ratingForm.review} onChange={handleRatingChange} required></textarea>
+                        </label>
+                        <button type="submit" className="submit-rating-btn">
+                          {ratedOrders.has(ratingForm.productId) ? 'Update Rating' : 'Submit Rating'}
+                        </button>
+                        <button type="button" className="cancel-rating-btn" onClick={() => setSelectedOrder(null)}>Cancel</button>
+                      </form>
                     </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            {selectedOrder === order.id && (
-              <div className="rating-form">
-                <h3>Submit Your Rating</h3>
-                <form onSubmit={submitRating}>
-                  <input type="hidden" name="userId" value={ratingForm.userId} readOnly />
-                  <label>
-                    Product:
-                    <select name="productId" value={ratingForm.productId} onChange={handleRatingChange}>
-                      {order.items.map(item => (
-                        !ratedOrders.has(item.productId) && (
-                          <option key={item.productId} value={item.productId}>{item.name}</option>
-                        )
-                      ))}
-                    </select>
-                  </label>
-                  <label>
-                    Rating:
-                    <input type="number" name="rating" min="1" max="5" value={ratingForm.rating} onChange={handleRatingChange} required />
-                  </label>
-                  <label>
-                    Review:
-                    <textarea name="review" value={ratingForm.review} onChange={handleRatingChange} required></textarea>
-                  </label>
-                  <button type="submit" className="submit-rating-btn">
-                    {ratedOrders.has(ratingForm.productId) ? 'Update Rating' : 'Submit Rating'}
-                  </button>
-                  <button type="button" className="cancel-rating-btn" onClick={() => setSelectedOrder(null)}>Cancel</button>
-                </form>
-              </div>
-            )}
-            {selectedOrder !== order.id && (
-              <button
-                className="proceed-to-checkout-btn"
-                onClick={() => showRatingFormForOrder(order.id)}
-                disabled={order.items.every(item => ratedOrders.has(item.productId))}
-              >
-                {ratingDataLoaded && ratedOrders.has(order.items[0].productId) ? 'Update Rating' : 'Add Ratings'}
-              </button>
+                  )}
+                  {selectedOrder !== order.id && (
+                    <button
+                      className="proceed-to-checkout-btn"
+                      onClick={() => showRatingFormForOrder(order.id)}
+                      disabled={order.items.every(item => ratedOrders.has(item.productId))}
+                    >
+                      {ratingDataLoaded && ratedOrders.has(order.items[0].productId) ? 'Update Rating' : 'Add Ratings'}
+                    </button>
+                  )}
+                </div>
+              ))
             )}
           </div>
-        ))}
+        </div>
       </div>
-      
-    </div>
-    </div>
-    <Footer />
+      <Footer />
     </div>
   );
 };

@@ -12,7 +12,11 @@ const BestSeller = () => {
       try {
         // Fetch the first 4 products
         const response = await axios.get('https://api.baazaarplus.xyz/api/products/product');
-        const topProducts = response.data.slice(0, 4);
+        const topProducts = response.data.sort((a,b)=>{
+          const ratingA = (a.averageRating);
+          const ratingB = (b.averageRating);
+          return ratingB-ratingA;
+        }).slice(0,4);
 
         // Set the top products to state
         setProducts(topProducts);
@@ -55,7 +59,7 @@ const BestSeller = () => {
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p>Price: {product.price}</p>
-              <p>Rating: {product.averageRating}</p>
+              <p>Rating: {product.averageRating.toFixed(1)}</p>
             </div>
           </div>
         ))}

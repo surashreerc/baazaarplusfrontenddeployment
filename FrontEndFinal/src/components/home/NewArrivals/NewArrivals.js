@@ -98,7 +98,11 @@ const NewArrivals = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get('https://api.baazaarplus.xyz/api/products/product');
-        setProducts(response.data);
+        setProducts(response.data.sort((a,b)=>{
+          const dateA = new Date(a.createdAt);
+          const dateB = new Date(b.createdAt);
+          return dateB-dateA;
+        }).slice(0,11));
       } catch (error) {
         console.error('Error fetching new arrivals:', error);
         setError('Failed to fetch new arrivals. Please try again later.');

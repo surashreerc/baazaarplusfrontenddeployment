@@ -12,34 +12,46 @@ function Contact() {
         <div>
             <Header />
         <div className="container">
-            <div className="left-panel">
-                <div className="brand">
-                    <Image className="w-48 object-cover" imgSrc={logo} />
-                </div>
-                <h3>Contact us to know more...</h3>
-            </div>
             <div className="right-panel">
-                <div className="form-container">
-                    <h2>Contact Us</h2>
-                    <form>
-                        <label htmlFor="firstName">First Name:</label>
-                        <input type="text" id="firstName" name="firstName" required />
+                
 
-                        <label htmlFor="lastName">Last Name:</label>
-                        <input type="text" id="lastName" name="lastName" required />
+ <div className="containerStyle">
+      <div>
+      <h1 className="main-heading">Contact Us</h1>
+        <div className="headerStyle">Do you need help getting started?</div>
+        <div className="subHeaderStyle">
+          We’ll help you every step of the way! Simply send us an email or give us a call for assistance. (All days, between 7:00 a.m. to 10:00 p.m.)
+        </div>
+        <div className="contactItemStyle">
+          <span className="iconStyle">📞</span>
+          <span className="textStyle">Call</span>
+        </div>
+        <div className="textStyle">1800--103-5577</div>
+        <div className="contactItemStyle" style={{ marginTop: '20px' }}>
+          <span className="iconStyle">📧</span>
+          <span className="textStyle">Email</span>
+        </div>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=plusbaazaar@gmail.com" target="_blank">plusbaazaar@gmail.com</a>
+      </div>
+      <div className="loginContainerStyle">
+        <iframe
+          src="https://maps.google.com/maps?q=19.0078103,72.8294108&z=15&output=embed"
+          width="100%"
+          height="300"
+          frameBorder="0"
+          style={{ border: '0' }}
+          allowFullScreen=""
+          aria-hidden="false"
+          tabIndex="0"
+          title="Location Map"
+        ></iframe>
+        <div className="loginHeaderStyle">Log in for more!</div>
+        <div className="loginTextStyle">
+          To make the most of our offers, track your order history and re-order products, we recommend that you Login / Create to your account.
+        </div>
+      </div>
+    </div>
 
-                        <label htmlFor="email">Email Address:</label>
-                        <input type="email" id="email" name="email" required />
-                        
-                        <label htmlFor="phone">Phone Number:</label>
-                        <input type="tel" id="phone" name="phone" required />
-
-                        <label htmlFor="message">Write Your Message:</label>
-                        <textarea id="message" name="message" required></textarea>
-                        
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
             </div>
         </div>
         <Footer />
