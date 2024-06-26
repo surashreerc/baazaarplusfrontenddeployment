@@ -53,7 +53,7 @@ const SignUp = () => {
       setSuccess('OTP verification successful. You can now sign in.');
       setError('');
       // Redirect to SignIn after successful OTP verification
-      window.location.href = 'https://baazaarplus-vlfb.vercel.app/';
+      window.location.href = 'https://baazaarplus.xyz/signin';
     } catch (err) {
       console.error('OTP verification failed:', err);
       setError('OTP verification failed. Please try again.');
