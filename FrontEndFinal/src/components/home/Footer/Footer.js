@@ -73,7 +73,7 @@ const Footer = () => {
           <div className="w-full">
             <p className="text-center mb-4">
               <a href="mailto:plusbaazaar@gmail.com" target="_blank">plusbaazaar@gmail.com</a>
-              1800-103-5577
+              <p>1800-103-5577</p>
             </p>
 
            
