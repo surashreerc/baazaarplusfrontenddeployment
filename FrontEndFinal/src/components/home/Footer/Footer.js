@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { FaFacebook,FaInstagram,FaRazorpay} from "react-icons/fa";
+import { FaFacebook,FaInstagram} from "react-icons/fa";
 import FooterListTitle from "./FooterListTitle";
+import { SiRazorpay } from "react-icons/si";
 
 const Footer = () => {
   const [emailInfo, setEmailInfo] = useState("");
@@ -64,7 +65,7 @@ const Footer = () => {
         <div>
           <FooterListTitle title="Payment partner" />
           <ul className="flex flex-col gap-2">
-          <FaRazorpay />
+          <SiRazorpay  />
           </ul>
         </div>
         <div className="col-span-2 flex flex-col items-center w-full px-4">
