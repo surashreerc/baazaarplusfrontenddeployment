@@ -35,7 +35,7 @@ const ProductDetails = () => {
         <p>{product.description}</p>
         <p className="price">Price: ₹{product.price.toFixed(2)}</p>
         <p className="rating">Rating: {product.averageRating}</p>
-        <p>Category ID: {product.category_id}</p>
+        <p>Category: {product.category_name}</p>
         <div className="buttons">
           <button className="back-button" onClick={handleBack}>Back</button>
           <button className="cart-button" onClick={handleAddToCart}>Add to Cart</button>

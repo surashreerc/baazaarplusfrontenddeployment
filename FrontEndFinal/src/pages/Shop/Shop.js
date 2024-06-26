@@ -120,6 +120,7 @@ const Shop = () => {
       const query = searchQuery.toLowerCase();
       const filtered = products.filter(product =>
         product.name.toLowerCase().includes(query) ||
+        product.description.toLowerCase().includes(query) ||
         product.category_name.toLowerCase().includes(query));
       setFilteredProducts(filtered);
     } catch (err) {
@@ -174,7 +175,7 @@ const Shop = () => {
                       <h2>{product.name}</h2>
                       <p>{product.description}</p>
                       <p>Price: ₹{product.price.toFixed(2)}</p>
-                      <p>Rating: {product.averageRating}</p>
+                      <p>Rating: {product.averageRating.toFixed(1)}</p>
                       <p>Category: {product.category_name}</p>
                       <p>Status: {getStockStatus(product.id)}</p>
                     </div>
