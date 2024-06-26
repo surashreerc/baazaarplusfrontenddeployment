@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { FaFacebook,FaInstagram} from "react-icons/fa";
+import { FaFacebook,FaInstagram,FaRazorpay} from "react-icons/fa";
 import FooterListTitle from "./FooterListTitle";
-import { paymentCard } from "../../../assets/images";
-import Image from "../../designLayouts/Image";
 
 const Footer = () => {
   const [emailInfo, setEmailInfo] = useState("");
@@ -66,12 +64,7 @@ const Footer = () => {
         <div>
           <FooterListTitle title="Payment partner" />
           <ul className="flex flex-col gap-2">
-          <Image
-              className={`w-[80%] lg:w-[60%] mx-auto ${
-                subscription ? "mt-2" : "mt-6"
-              }`}
-              imgSrc={paymentCard}
-            />
+          <FaRazorpay />
           </ul>
         </div>
         <div className="col-span-2 flex flex-col items-center w-full px-4">
