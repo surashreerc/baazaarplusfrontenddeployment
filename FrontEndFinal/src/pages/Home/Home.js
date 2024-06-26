@@ -12,9 +12,7 @@ const Home = () => {
       <Banner />
       <NewArrivals />
       <BannerBottom />
-      <div className="max-w-container mx-auto px-4 text-color:black">
-        {userEmail && <p>User Email: {userEmail}</p>}
-      </div>
+      
     </div>
   );
 };
