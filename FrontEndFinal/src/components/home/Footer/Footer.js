@@ -63,14 +63,12 @@ const Footer = () => {
             </ul>
         </div>
         <div>
-          
-          <ul className="flex flex-col gap-2">
           <FooterListTitle title="Payment partner" />
-            <p>
-            <img src="https://i.ibb.co/4dHGFCZ/razorpay.png" alt="Razorpay Logo"/>
-            </p>
-            
-          </ul>
+          <div className="w-full">
+          <p className="text-center mb-4">
+            <img src="https://i.ibb.co/fF5cLts/razorpay.png" alt="Razorpay Logo" style={{height:"30px"}}/>
+          </p>
+        </div>
         </div>
         <div className="col-span-2 flex flex-col items-center w-full px-4">
           <FooterListTitle title="Contact Us On" />
