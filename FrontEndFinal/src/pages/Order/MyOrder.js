@@ -159,8 +159,10 @@ const MyOrder = () => {
   };
 
   return (
-    <div className='myOrder'>
+    <div>
       <Header />
+    <div className='myOrder'>
+      
       <div className='order-back'>
       <div className="order-container">
         {orders.map(order => (
@@ -226,8 +228,10 @@ const MyOrder = () => {
           </div>
         ))}
       </div>
-      <Footer />
+      
     </div>
+    </div>
+    <Footer />
     </div>
   );
 };
