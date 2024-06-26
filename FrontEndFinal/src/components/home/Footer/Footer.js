@@ -72,7 +72,7 @@ const Footer = () => {
           <FooterListTitle title="Contact Us On" />
           <div className="w-full">
             <p className="text-center mb-4">
-              <a href="mailto:plusbaazaar@gmail.com" target="_blank">plusbaazaar@gmail.com</a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=plusbaazaar@gmail.com" target="_blank">plusbaazaar@gmail.com</a>
               <p>1800-103-5577</p>
             </p>
 

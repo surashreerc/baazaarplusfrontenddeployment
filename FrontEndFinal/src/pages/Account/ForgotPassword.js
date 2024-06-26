@@ -43,7 +43,7 @@ const ForgotPassword = () => {
       setSuccess('Password reset successful. You can now sign in.');
       setError('');
       setStage('email');
-      window.location.href = 'https://api.baazaarplus.xyz/signin';
+      window.location.href = 'https://baazaarplus.xyz/signin';
     } catch (err) {
       setError('Incorrect OTP.');
       setSuccess('');
