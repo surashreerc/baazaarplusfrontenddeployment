@@ -5,6 +5,7 @@ import Footer from '../../components/home/Footer/Footer';
 import { UserContext } from '../../UserContext'; // Import UserContext from where it's defined
 import './profile.css';
 
+
 const Profile = () => {
   const { userEmail } = useContext(UserContext); // Access userEmail from the context
   const [user, setUser] = useState(null);
@@ -19,6 +20,7 @@ const Profile = () => {
   });
   const [showAddressForm, setShowAddressForm] = useState(false);
 
+
   const fetchUserAddress = async () => {
     if (user) {
       try {
@@ -27,14 +29,18 @@ const Profile = () => {
           //headers: { Authorization: `Bearer ${token}` }
         });
 
+
         const loggedInUser = userResponse.data.find(userItem => userItem.email === userEmail); // Use userEmail from context
+
 
         if (!loggedInUser) {
           setError('User not found.');
           return;
         }
 
+
         const userId = loggedInUser.id;
+
 
         const addressResponse = await axios.get(`https://api.baazaarplus.xyz/api/addresses/user/${userId}`, {
           headers: { Authorization: `Bearer ${token}` }
@@ -54,6 +60,7 @@ const Profile = () => {
     }
   };
 
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -67,19 +74,27 @@ const Profile = () => {
       }
     };
 
+
     fetchUserData();
   }, [userEmail]); // Trigger useEffect when userEmail changes
+
 
   useEffect(() => {
     fetchUserAddress();
   }, [user]);
 
+
   const handleAddOrUpdateAddress = () => {
     setShowAddressForm(true);
   };
 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!/^\d{6}$/.test(formData.pincode)) { // Validate pincode
+      setError('Pincode must be exactly 6 digits.');
+      return;
+    }
     try {
       const token = localStorage.getItem('token');
       if (address) {
@@ -106,6 +121,7 @@ const Profile = () => {
     }
   };
 
+
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -113,9 +129,43 @@ const Profile = () => {
     });
   };
 
+
   const handleCancel = () => {
     setShowAddressForm(false); // Hide the form when "Cancel" is clicked
   };
+
+
+  const statesOfIndia = [
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal"
+  ];
+
 
   return (
     <div className='profile'>
@@ -155,12 +205,18 @@ const Profile = () => {
                 </label>
                 <label>
                   State:
-                  <input type="text" name="state" value={formData.state} onChange={handleChange} />
+                  <select name="state" value={formData.state} onChange={handleChange}>
+                    <option value="">Select State</option>
+                    {statesOfIndia.map(state => (
+                      <option key={state} value={state}>{state}</option>
+                    ))}
+                  </select>
                 </label>
                 <label>
                   Pincode:
                   <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} />
                 </label>
+                {error && <p className="error">{error}</p>}
                 <button type="submit" className='addresssub'>Submit</button><br></br>
                 <button type="button" className='addresscan' onClick={handleCancel}>Cancel</button>
               </form>
@@ -172,5 +228,6 @@ const Profile = () => {
     </div>
   );
 };
+
 
 export default Profile;
