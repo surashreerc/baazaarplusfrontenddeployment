@@ -189,7 +189,7 @@
 
 /* Popup Content */
 .popup-content {
-  background-color:  white;
+  background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -207,7 +207,8 @@
 }
 
 .popup-content button {
-  background-color:#e6be8a;
+  background-color:  #e6be8a;
+  color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -215,8 +216,9 @@
 }
 
 .popup-content button:hover {
-  background-color: black;
+  background-color:  black;
 }
+
 
 .add-address-btn, .update-address-btn, .proceed-to-checkout-btn 
 { padding: 10px 20px; 
