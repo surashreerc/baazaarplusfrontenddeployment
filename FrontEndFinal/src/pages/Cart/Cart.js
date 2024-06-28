@@ -207,7 +207,7 @@ const Cart = () => {
                   <span>Total Amount:</span> <span>₹{calculateTotalAmount()}</span>
                 </p>
                
-                <Link to="/orderconfirm"><button className="proceed-to-checkout-btn">Proceed to Order</button></Link> 
+                <Link to="/orderconfirm"><button className="proceed-to-order-btn">Proceed to Order</button></Link> 
                
               </div>
             </div>
