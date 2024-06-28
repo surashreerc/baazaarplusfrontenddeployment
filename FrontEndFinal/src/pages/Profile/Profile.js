@@ -7,10 +7,20 @@ import './profile.css';
 
 const Profile = () => {
   const { userEmail } = useContext(UserContext);
-  
+
+  // Utility function to safely parse JSON
+  const safeJSONParse = (item) => {
+    try {
+      return JSON.parse(item);
+    } catch (e) {
+      console.error('Failed to parse JSON:', e);
+      return null;
+    }
+  };
+
   // Initialize state from localStorage if available
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
-  const [address, setAddress] = useState(JSON.parse(localStorage.getItem('address')) || null);
+  const [user, setUser] = useState(safeJSONParse(localStorage.getItem('user')));
+  const [address, setAddress] = useState(safeJSONParse(localStorage.getItem('address')));
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     userId: '',
