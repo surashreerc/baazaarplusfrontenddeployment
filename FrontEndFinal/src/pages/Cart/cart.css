@@ -197,19 +197,25 @@
   font-family: var(--titleFont);
 }
 
-
-
-.proceed-to-order-btn{
-  background-color: #e6be8a;
-  color: white;
+.proceed-to-checkout-btn {
+  display: block;
   width: 100%;
   padding: 15px;
+  background-color: #e6be8a;
+  color: white;
+  border: none;
+  border-radius: 5px;
   font-size: 18px;
+  cursor: pointer;
+  text-align: center;
   transition: background-color 0.3s;
+  margin-top: 20px; 
+}
+.proceed-to-checkout-btn > a{
+  text-decoration: none;
 }
 
-
-.proceed-to-order-btn:hover {
+.proceed-to-checkout-btn:hover {
   background-color: #000;
   transform: scale(1.05);
 }

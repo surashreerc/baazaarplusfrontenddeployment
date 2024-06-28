@@ -2,15 +2,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Header from '../../components/home/Header/Header';
 import Footer from '../../components/home/Footer/Footer';
-import { UserContext } from '../../UserContext';
+import { UserContext } from '../../UserContext'; // Import UserContext from where it's defined
 import './profile.css';
 
+
 const Profile = () => {
-  const { userEmail } = useContext(UserContext);
-  
-  // Initialize state from localStorage if available
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
-  const [address, setAddress] = useState(JSON.parse(localStorage.getItem('address')) || null);
+  const { userEmail } = useContext(UserContext); // Access userEmail from the context
+  const [user, setUser] = useState(null);
+  const [address, setAddress] = useState(null);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     userId: '',
@@ -21,23 +20,38 @@ const Profile = () => {
   });
   const [showAddressForm, setShowAddressForm] = useState(false);
 
+
   const fetchUserAddress = async () => {
     if (user) {
       try {
         const token = localStorage.getItem('token');
-        const addressResponse = await axios.get(`https://api.baazaarplus.xyz/api/addresses/user/${user.id}`, {
+        const userResponse = await axios.get('https://api.baazaarplus.xyz/api/auth/users', {
+          //headers: { Authorization: `Bearer ${token}` }
+        });
+
+
+        const loggedInUser = userResponse.data.find(userItem => userItem.email === userEmail); // Use userEmail from context
+
+
+        if (!loggedInUser) {
+          setError('User not found.');
+          return;
+        }
+
+
+        const userId = loggedInUser.id;
+
+
+        const addressResponse = await axios.get(`https://api.baazaarplus.xyz/api/addresses/user/${userId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        const userAddress = addressResponse.data[0];
-        setAddress(userAddress);
-        // Save address to localStorage
-        localStorage.setItem('address', JSON.stringify(userAddress));
+        setAddress(addressResponse.data[0]); // Assuming the first address is the user's address
         setFormData({
-          userId: user.id,
-          line1: userAddress?.line1 || '',
-          line2: userAddress?.line2 || '',
-          state: userAddress?.state || '',
-          pincode: userAddress?.pincode || ''
+          userId: userId,
+          line1: addressResponse.data[0]?.line1 || '',
+          line2: addressResponse.data[0]?.line2 || '',
+          state: addressResponse.data[0]?.state || '',
+          pincode: addressResponse.data[0]?.pincode || ''
         });
       } catch (err) {
         setError('Failed to fetch user address. Please try again later.');
@@ -46,14 +60,13 @@ const Profile = () => {
     }
   };
 
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get('https://api.baazaarplus.xyz/api/auth/users');
-        const loggedInUser = response.data.find(userItem => userItem.email === userEmail);
+        const loggedInUser = response.data.find(userItem => userItem.email === userEmail); // Use userEmail from context
         setUser(loggedInUser);
-        // Save user to localStorage
-        localStorage.setItem('user', JSON.stringify(loggedInUser));
         setFormData((prevFormData) => ({ ...prevFormData, userId: loggedInUser.id }));
       } catch (err) {
         setError('Failed to fetch user data. Please try again later.');
@@ -61,30 +74,31 @@ const Profile = () => {
       }
     };
 
-    if (!user) {
-      fetchUserData();
-    }
-  }, [userEmail]);
+
+    fetchUserData();
+  }, [userEmail]); // Trigger useEffect when userEmail changes
+
 
   useEffect(() => {
-    if (user && !address) {
-      fetchUserAddress();
-    }
+    fetchUserAddress();
   }, [user]);
+
 
   const handleAddOrUpdateAddress = () => {
     setShowAddressForm(true);
   };
 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!/^\d{6}$/.test(formData.pincode)) {
+    if (!/^\d{6}$/.test(formData.pincode)) { // Validate pincode
       setError('Pincode must be exactly 6 digits.');
       return;
     }
     try {
       const token = localStorage.getItem('token');
       if (address) {
+        // Update existing address
         await axios.put(`https://api.baazaarplus.xyz/api/addresses/address/update/${address.addressId}`, {
           line1: formData.line1,
           line2: formData.line2,
@@ -94,17 +108,19 @@ const Profile = () => {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
+        // Add new address
         await axios.post('https://api.baazaarplus.xyz/api/addresses/address/add', formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
       fetchUserAddress();
-      setShowAddressForm(false);
+      setShowAddressForm(false); // Reset the state after successfully adding or updating the address
     } catch (err) {
       setError('Failed to add or update address. Please try again later.');
       console.error('Error adding or updating address:', err);
     }
   };
+
 
   const handleChange = (event) => {
     setFormData({
@@ -113,9 +129,11 @@ const Profile = () => {
     });
   };
 
+
   const handleCancel = () => {
-    setShowAddressForm(false);
+    setShowAddressForm(false); // Hide the form when "Cancel" is clicked
   };
+
 
   const statesOfIndia = [
     "Andhra Pradesh",
@@ -147,6 +165,7 @@ const Profile = () => {
     "Uttarakhand",
     "West Bengal"
   ];
+
 
   return (
     <div className='profile'>
@@ -209,5 +228,6 @@ const Profile = () => {
     </div>
   );
 };
+
 
 export default Profile;
