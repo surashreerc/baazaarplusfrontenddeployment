@@ -189,7 +189,7 @@
 
 /* Popup Content */
 .popup-content {
-  background-color:  #e6be8a;
+  background-color:  white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -207,8 +207,7 @@
 }
 
 .popup-content button {
-  background-color: #3399cc;
-  color: #fff;
+  background-color:#e6be8a;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
