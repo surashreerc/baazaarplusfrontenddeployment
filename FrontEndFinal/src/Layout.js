@@ -5,7 +5,7 @@ import {
   } from "react-router-dom";
 import React, { useContext } from "react";
 import Footer from "./components/home/Footer/Footer";
-import FooterBottom from "./components/home/Footer/FooterBottom";
+
 import Header from "./components/home/Header/Header";
 import Product from "./components/Product/ProductGrid";
 import BestSeller from "././pages/Shop/BestSeller"
@@ -43,7 +43,6 @@ const Layout = () => {
       <Hero />
       <VideoWithCards />
       <Footer />
-      <FooterBottom />
     </div>
   );
 };

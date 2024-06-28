@@ -99,7 +99,7 @@
 
 
 .proceed-to-checkout-btn:hover {
-  background-color: #d1a673;
+  background-color:black;
 }
 
 
@@ -144,22 +144,18 @@
 
 .submit-rating-btn:hover,
 .cancel-rating-btn:hover {
-  background-color: #d1a673;
+  background-color:black;
 }
 
 
 .submit-rating-btn {
   margin-right: 20px;
+  background-color:#e6be8a
 }
 
 
 .cancel-rating-btn {
-  background-color: #ccc;
-}
-
-
-.cancel-rating-btn:hover {
-  background-color: #aaa;
+  background-color:#e6be8a;
 }
 
 
@@ -193,7 +189,7 @@
 
 /* Popup Content */
 .popup-content {
-  background: #fff;
+  background-color:  #e6be8a;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -220,5 +216,18 @@
 }
 
 .popup-content button:hover {
-  background-color: #287a9e;
+  background-color: black;
 }
+
+.add-address-btn, .update-address-btn, .proceed-to-checkout-btn 
+{ padding: 10px 20px; 
+  margin: 10px 0; border: none; 
+  border-radius: 4px; 
+  background-color:  #e6be8a; 
+  color: #fff; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; } 
+
+.add-address-btn:hover, .update-address-btn:hover, .proceed-to-checkout-btn:hover 
+{ background-color: black }

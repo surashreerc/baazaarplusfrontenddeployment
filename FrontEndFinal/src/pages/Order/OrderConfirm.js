@@ -572,9 +572,13 @@ const OrderConfirm = () => {
                       <p>Pincode: {addr.pincode}</p>
                     </div>
                   ))}
+                  <button className="update-address-btn" onClick={() => navigate('/profile')}>Update Address</button>
                 </div>
               ) : (
-                <p>No Address Found</p>
+                <div>
+                  <p>No Address Found</p>
+                  <button className="add-address-btn" onClick={() => navigate('/profile')}>Add Address</button>
+                </div>
               )}
             </div>
           )}
