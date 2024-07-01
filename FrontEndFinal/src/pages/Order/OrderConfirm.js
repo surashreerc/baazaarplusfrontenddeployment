@@ -559,7 +559,7 @@ const OrderConfirm = () => {
           {userInfo && (
             <div>
               <h3>Your Information:</h3>
-              <p>Username: {userInfo.username}</p>
+              <p>Name: {userInfo.username}</p>
               <p>Email: {userInfo.email}</p>
               {userInfo.addresses && userInfo.addresses.length > 0 ? (
                 <div>

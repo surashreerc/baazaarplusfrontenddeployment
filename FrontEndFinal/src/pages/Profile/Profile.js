@@ -167,7 +167,7 @@ const Profile = () => {
             <img src="https://cdn-icons-png.flaticon.com/512/10337/10337609.png" alt="Profile Icon" className="profile-icon" />
             <div className="profile-info">
               <h2 className='he'>Your Information:</h2>
-              <p>Username: {user && user.username}</p>
+              <p>Name: {user && user.username}</p>
               <p>Email: {user && user.email}</p>
               <h2 className='he'>Your Address:</h2>
               {address ? (

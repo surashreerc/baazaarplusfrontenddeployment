@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { PersistGate } from "redux-persist/integration/react";
 import "slick-carousel/slick/slick.css";
 import { Provider } from "react-redux";
-import { store, persistor } from "./redux/store";
+import { store, persistor } from "../src/pages/Shop/redux/store";
 import "./index.css";
 import App from "./App";
 

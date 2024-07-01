@@ -88,7 +88,7 @@ const SignUp = () => {
                 {success && <p className="success text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSignUpSubmit} className="space-y-4">
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="username" className="text-gray-700">Username:</label>
+                    <label htmlFor="username" className="text-gray-700">Name:</label>
                     <input
                       id="username"
                       className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
