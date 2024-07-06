@@ -116,7 +116,7 @@ const SignIn = () => {
                   />
                   <button
                     type="button"
-                    className="absolute right-2 top-1/3 transform -translate-y-1/2 text-gray-600 no-hover"
+                    className="absolute right-0.5 text-gray-600"
                     onClick={() => setShowPassword(prev => !prev)}
                   >
                     {showPassword ? <FaEye /> : <FaEyeSlash />}
