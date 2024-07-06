@@ -9,6 +9,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
+  const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [otp, setOtp] = useState('');
@@ -26,7 +27,8 @@ const SignUp = () => {
       const response = await axios.post('https://api.baazaarplus.xyz/api/auth/signup', {
         username,
         email,
-        password
+        password,
+        fullname
       });
       console.log('Signup successful:', response.data);
       setSuccess('Signup successful. Please check your email for the OTP.');
@@ -88,13 +90,24 @@ const SignUp = () => {
                 {success && <p className="success text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSignUpSubmit} className="space-y-4">
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="username" className="text-gray-700">Name:</label>
+                    <label htmlFor="username" className="text-gray-700">Username:</label>
                     <input
                       id="username"
                       className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                       type="text"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="fullname" className="text-gray-700">Full Name:</label>
+                    <input
+                      id="fullname"
+                      className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      type="text"
+                      value={fullname}
+                      onChange={(e) => setFullname(e.target.value)}
                       required
                     />
                   </div>
@@ -122,7 +135,7 @@ const SignUp = () => {
                       />
                       <button
                         type="button"
-                        className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600"
+                        className="absolute right-2 top-1/3 transform -translate-y-1/2 text-gray-600"
                         onClick={() => setShowPassword(prev => !prev)}
                       >
                         {showPassword ? <FaEyeSlash /> : <FaEye />}

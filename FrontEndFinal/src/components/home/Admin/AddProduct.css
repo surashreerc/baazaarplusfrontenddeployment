@@ -111,6 +111,7 @@
 
 .search-bar button {
   padding: 10px 20px;
+  margin-top: -15px;
   background-color: #e6be8a;
   color: white;
   border: none;

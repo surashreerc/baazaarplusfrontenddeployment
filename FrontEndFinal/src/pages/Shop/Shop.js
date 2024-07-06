@@ -149,7 +149,7 @@ const Shop = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <button onClick={handleSearch}>Search</button>
+              <button className='btn' onClick={handleSearch}>Search</button>
             </div>
             {error && <p className="error">{error}</p>}
             <div className="products">

@@ -19,8 +19,8 @@ const Profile = () => {
   };
 
   // Initialize state from localStorage if available
-  const [user, setUser] = useState(safeJSONParse(localStorage.getItem('user')));
-  const [address, setAddress] = useState(safeJSONParse(localStorage.getItem('address')));
+  const [user, setUser] = useState(null);
+  const [address, setAddress] = useState(null);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     userId: '',
@@ -167,7 +167,8 @@ const Profile = () => {
             <img src="https://cdn-icons-png.flaticon.com/512/10337/10337609.png" alt="Profile Icon" className="profile-icon" />
             <div className="profile-info">
               <h2 className='he'>Your Information:</h2>
-              <p>Name: {user && user.username}</p>
+              <p>Username: {user && user.username}</p>
+              <p>Full Name: {user && user.fullname}</p>
               <p>Email: {user && user.email}</p>
               <h2 className='he'>Your Address:</h2>
               {address ? (

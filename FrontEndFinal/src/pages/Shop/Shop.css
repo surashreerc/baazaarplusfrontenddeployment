@@ -137,12 +137,15 @@
   border: 2px solid #e6be8a; /* Added border */
 }
 
+
 .search-bar button {
   padding: 10px;
   background-color: #e6be8a; /* Updated button color */
+  margin-top: -15px;
   color: white;
   border: none;
   cursor: pointer;
+  border: 2px solid #e6be8a;
 }
 
 .search-bar button:hover {
