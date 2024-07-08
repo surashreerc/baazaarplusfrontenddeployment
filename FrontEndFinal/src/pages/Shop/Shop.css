@@ -32,14 +32,14 @@
   animation: backgroundAnimation 5s ease-in-out infinite; /* Apply the animation */
 }
 
-@keyframes backgroundAnimation {
+/* @keyframes backgroundAnimation {
   0%, 100% {
     background-color: white;
   }
   50% {
     background-color: #e6be8a;
   }
-}
+} */
 
 .product-container:hover {
   transform: scale(1.05);
@@ -55,6 +55,9 @@
   height: 180px; /* Adjust this height as needed */
   object-fit: cover; /* Ensure the image covers the area without distortion */
   transition: transform 0.3s ease;
+  align-items: center;
+  margin-left: 22px;
+  margin-top: 5px;
 }
 
 .product-image-wrapper:hover .product-image {
