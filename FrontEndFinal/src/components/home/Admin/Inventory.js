@@ -38,6 +38,8 @@ const Inventory = () => {
           category.products.map(product => ({
             ...product,
             category_id: category.id,
+            category_name: category.name,
+            category_description: category.description,
             stock: inventoryData.find(item => item.productId === product.id)?.stock || 0
           }))
         );
@@ -137,8 +139,10 @@ const Inventory = () => {
                       <p>{product.description}</p>
                       <p>Product Id: {product.id}</p>
                       <p>Price: ₹{product.price.toFixed(2)}</p>
-                      <p>Rating: {product.averageRating}</p>
+                      <p>Rating: {product.averageRating.toFixed(1)}</p>
                       <p>Category ID: {product.category_id}</p>
+                      <p>Category: {product.category_name}</p>
+                      <p>Category Description: {product.category_description}</p>
                       <p>Stock: {product.stock}</p>
                     </div>
                   </div>

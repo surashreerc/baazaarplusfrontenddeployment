@@ -43,7 +43,8 @@ const Shop = () => {
           category.products.map(product => ({
             ...product,
             category_id: category.id,
-            category_name: category.name
+            category_name: category.name,
+            category_description: category.description
           }))
         );
 
@@ -177,6 +178,7 @@ const Shop = () => {
                       <p>Price: ₹{product.price.toFixed(2)}</p>
                       <p>Rating: {product.averageRating.toFixed(1)}</p>
                       <p>Category: {product.category_name}</p>
+                      <p>Category Description: {product.category_description}</p>
                       <p>Status: {getStockStatus(product.id)}</p>
                     </div>
                   </div>

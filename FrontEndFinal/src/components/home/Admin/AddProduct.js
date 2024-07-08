@@ -34,7 +34,8 @@ const AddProduct = () => {
           category.products.map(product => ({
             ...product,
             category_id: category.id, // Fetch category ID from the backend
-            category_name: category.name // Fetch category name from the backend
+            category_name: category.name,
+            category_description: category.description // Fetch category name from the backend
           }))
         );
 
@@ -129,8 +130,9 @@ const AddProduct = () => {
                       <p>{product.description}</p>
                       <p>Product Id: {product.id}</p>
                       <p>Price: ₹{product.price.toFixed(2)}</p>
-                      <p>Rating: {product.averageRating}</p>
+                      <p>Rating: {product.averageRating.toFixed(1)}</p>
                       <p>Category: {product.category_name}</p> {/* Display category name */}
+                      <p>Category Description: {product.category_description}</p> 
                     </div>
                   </div>
                 ))

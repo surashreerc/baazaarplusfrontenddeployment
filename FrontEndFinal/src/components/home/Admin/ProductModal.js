@@ -133,7 +133,7 @@ const ProductModal = ({ isOpen, onRequestClose, categories }) => {
         </label>
         <label style={labelStyles}>
           Stock:
-          <input type="number" value={stock} onChange={(e) => setStock(parseInt(e.target.value))} required style={inputStyles} />
+          <input type="number" value={stock} onChange={(e) => setStock(parseInt(e.target.value))} min="0" required style={inputStyles} />
         </label>
         <label style={labelStyles}>
           Product Image:
